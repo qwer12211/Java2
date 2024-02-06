@@ -1,0 +1,46 @@
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Введите свой вес в килограммах");
+        double weight = sc.nextDouble();
+
+        System.out.println("Введите свой рост в метрах");
+        double height = sc.nextDouble();
+
+        System.out.println("Введите свой возраст");
+        int age = sc.nextInt();
+
+        double bmi = weight / (height * height);
+
+        System.out.println("Ваш ИМТ равен: " + bmi);
+
+        double idealWeight = 24.9 * (height * height);
+        System.out.println("Ваш идеальный вес: " + idealWeight);
+
+        System.out.println();
+
+        double bmr = 88.36 + (13.4 * weight) + (4.8 * height) - (5.7 * age);
+
+        if (bmi > 24.9) {
+            double weightToLose = bmi - 24.9;
+            double recommendedCalories = bmr - 500;
+            System.out.println("Рекомендуется снизить вес для достижения идеального веса.");
+            System.out.println("Идеальный вес: " + idealWeight);
+            System.out.println("Необходимо сбросить: " + weightToLose + " кг.");
+            System.out.println("Рекомендуемый дневной прием калорий: " + recommendedCalories);
+        } else if (bmi < 18.5) {
+            double weightToGain = 18.5 - bmi;
+            double recommendedCalories = bmr + 500;
+            System.out.println("Рекомендуется увеличить потребление пищи для набора веса.");
+            System.out.println("Идеальный вес: " + idealWeight);
+            System.out.println("Необходимо набрать: " + weightToGain + " кг.");
+            System.out.println("Рекомендуемый дневной прием калорий: " + recommendedCalories);
+        } else {
+            System.out.println("Ваш вес находится в пределах нормы.");
+            System.out.println("Идеальный вес: " + idealWeight);
+            System.out.println("Рекомендуемый дневной прием калорий: " + bmr);
+        }
+    }
+}
